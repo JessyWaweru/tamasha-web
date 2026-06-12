@@ -1,73 +1,168 @@
-# React + TypeScript + Vite
+# 🎬 Tamasha
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+> **Nairobi's Ultimate Entertainment Hub.**
+> A full-stack platform that aggregates real-time cinema schedules and manages custom events, providing moviegoers and event planners with a seamless, cinematic experience.
+---
+### 📸 Application Screenshots
 
-Currently, two official plugins are available:
+#### 🏠 Home Page
+| Desktop | Mobile |
+|:---:|:---:|
+| ![Desktop Home](screenshots/desktophomepage1.png) | ![Mobile Home](screenshots/shopcrawl-home-screenshot-m.png) |
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+#### 🔐 Authentication
+| Desktop Signup | Mobile Signup |
+|:---:|:---:|
+| ![Desktop Signup](screenshots/desktopsignup.png) | ![Mobile Signup](screenshots/shopcrawl-login-screenshot-m.png) |
 
-## React Compiler
+#### 🔍 Events Page
+| Desktop Page | Mobile Page |
+|:---:|:---:|
+| ![Desktop Page](screenshots/desktopevents1.png) <br> ![Desktop Search 2](screenshots/desktopevents2.png) | ![Mobile Page](screenshots/shopcrawl-productsearch-screenshot-m.png) |
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+#### 🔍 Event Details Page
+| Desktop Page | Mobile Page |
+|:---:|:---:|
+| ![Desktop Page](screenshots/desktopeventdetails1.png) <br> <br> ![Desktop Page](screenshots/desktopeventdetails2.png) | ![Mobile Page](screenshots/shopcrawl-smartrank-screenshot-1-m.png) <br> <br> ![Mobile Page](screenshots/shopcrawl-smartrank-screenshot-2-m.png) |
 
-## Expanding the ESLint configuration
+#### 🎬  Movies Page
+| Desktop Page | Mobile Page |
+|:---:|:---:|
+| ![Desktop Page](screenshots/desktopmovie1.png) <br> <br> ![Desktop Page](screenshots/desktopmovie2.png)  <br> <br> ![Desktop Page](screenshots/desktopmovie3.png)| ![Mobile Page](screenshots/shopcrawl-smartrank-screenshot-1-m.png) <br> <br> ![Mobile Page](screenshots/shopcrawl-smartrank-screenshot-2-m.png) |
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+#### 🎬  Movie Details Page
+| Desktop Page | Mobile Page |
+|:---:|:---:|
+| ![Desktop Page](screenshots/desktopmoviedetails1.png) <br> <br> ![Desktop Page](screenshots/desktopmoviedetails2.png)| ![Mobile Page](screenshots/shopcrawl-smartrank-screenshot-1-m.png) <br> <br> ![Mobile Page](screenshots/shopcrawl-smartrank-screenshot-2-m.png) |
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+---
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+
+## 📋 Table of Contents
+- [About](#-about)
+- [Key Features](#-key-features)
+- [Tech Stack](#-tech-stack)
+- [Architecture](#-architecture)
+- [Getting Started](#-getting-started)
+- [Running Tests](#-running-tests)
+- [API Documentation](#-api-documentation)
+- [Author](#-author)
+
+---
+
+## 📖 About
+**Tamasha** bridges the gap in Nairobi's entertainment scene by unifying fragmented cinema schedules and event management. Instead of navigating multiple theater websites, Tamasha aggregates real-time showtimes, cinema locations, and ticket availability into one platform, alongside a robust system for managing conferences, meetups, and community events.
+
+---
+
+## 🚀 Key Features
+* **🍿 Real-Time Cinema Aggregator:** Automatically scrapes and maps current movies to specific cinemas, dates, and showtimes across Nairobi.
+* **📅 Custom Event Management:** A full CRUD system for managing conferences, including speaker tracking and sponsor details.
+* **🔐 Secure Authentication:** Seamless user onboarding powered by Clerk for secure session management.
+* **🎨 Cinematic UI:** A premium, dark-mode focused design with dynamic blurred backgrounds and responsive movie/event grids.
+* **🛡️ Stealth Scraping:** Engineered with anti-bot bypass techniques to ensure reliable data synchronization.
+* **🧠 Smart Data Grouping:** Automatically organizes massive schedule datasets by date and cinema location for an intuitive booking experience.
+
+---
+
+## 🛠 Tech Stack
+
+### **Frontend**
+* **React.js** (Vite) - Component-based UI architecture.
+* **TypeScript** - Type-safe development.
+* **Tailwind CSS** - Modern, utility-first styling.
+* **shadcn/ui & Lucide React** - Premium UI components and icon set.
+* **Clerk** - Secure user authentication.
+* **Toastify** - User feedback notifications.
+
+### **Backend**
+* **Django REST Framework (DRF)** - Robust API development.
+* **Django ORM** - Database abstraction and management.
+* **Cloudscraper & Requests** - Robust web-scraping engine with TLS fingerprint evasion.
+* **Gunicorn** - Production-grade WSGI server.
+* **SQLite** (Dev) / **PostgreSQL** (Prod) - Data persistence.
+
+---
+
+## 🏗 Architecture
+The application follows a decoupled **Client-Server Architecture**:
+
+1.  **Client (Frontend):** Consumes RESTful APIs, manages complex UI states (grouping schedules by date/cinema), and handles auth via Clerk.
+2.  **Server (Backend):** Houses the relational database (Events, Cinemas, Showtimes), manages business logic, and executes automated scraping pipelines.
+3.  **Data Pipeline:** A scheduled Python management command handles stealth requests to external APIs, ensuring local data mirrors real-time availability.
+---
+
+## 🏁 Getting Started
+
+Follow these instructions to set up the project locally on your machine.
+
+### Prerequisites
+* Python 3.8+
+* Node.js & npm
+* Git
+
+### 1. Backend Setup
+```bash
+# Clone the repository
+git clone [https://github.com/JessyWaweru/TAMASHA-BACKEND.git](https://github.com/JessyWaweru/TAMASHA-BACKEND.git)
+cd TAMASHA-BACKEND
+
+# Create a virtual environment
+python -m venv venv
+
+# Activate virtual environment
+# On Windows:
+venv\Scripts\activate
+# On Mac/Linux:
+source venv/bin/activate
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Run database migrations
+python manage.py migrate
+
+# Populate Cinema Data
+python manage.py scrape_movies
+
+# Start the Django server
+python manage.py runserver
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### 2. Frontend Setup
+This project uses a separate repository for the frontend.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+1.  Clone the frontend repository:
+    ```bash
+    git clone [https://github.com/JessyWaweru/TAMASHA-FRONTEND.git](https://github.com/JessyWaweru/TAMASHA-FRONTEND.git)
+    cd TAMASHA-FRONTEND
+    ```
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+2.  Install dependencies and start:
+    ```bash
+    npm install
+    npm run dev
+    ```
+## 🧪 Running Tests
+This project maintains high code quality through automated integration tests.
+To run the test suite:
+```bash
+cd backend
+python manage.py test -v 2
 ```
+
+## 📡 API Documentation
+
+| Method | Endpoint | Description | Access |
+| :--- | :--- | :--- | :--- |
+| **GET** | `/api/events/` | List all Events | 🌍 Public |
+| **POST** | `/api/login/` | Login & receive Token | 🌍 Public |
+| **GET** | `/api/events/{id}/` | Get details (with nested schedules) | 🌍 Public |
+| **POST** | `/api/events/` | Create a custom event | 🔐 Authenticated |
+| **GET** | `/api/cinemas/` | List Participating Cinemas | 🌍 Public |
+
+## 👨‍💻 Author
+
+**JESSY BRYAN WAWERU**
+*Full Stack Developer*
