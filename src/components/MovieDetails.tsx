@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import { API_URL } from "@/lib/api";
+import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -42,7 +43,7 @@ export default function MovieDetails() {
   useEffect(() => {
     const fetchMovie = async () => {
       try {
-        const response = await fetch(`http://127.0.0.1:8000/api/events/${id}/`);
+        const response = await fetch(`${API_URL}/api/events/${id}/`);
         if (!response.ok) throw new Error("Failed to fetch movie details");
         
         const data = await response.json();
@@ -75,11 +76,6 @@ export default function MovieDetails() {
     } catch {
       return timeString;
     }
-  };
-
-  const formatDateLabel = (dateString: string) => {
-    const date = new Date(dateString);
-    return date.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
   };
 
   if (isLoading) {

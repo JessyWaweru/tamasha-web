@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
-import { Link, useParams, useNavigate } from "react-router-dom";
+import { API_URL } from "@/lib/api";
+import { useState, useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import { useUser, useAuth } from "@clerk/clerk-react";
 import formatDate from "@/utilities/formatdate";
 import { Button } from "@/components/ui/button";
@@ -57,7 +58,7 @@ export default function EventDetails() {
     const fetchEvent = async () => {
       try {
         const token = await getToken();
-        const response = await fetch(`http://127.0.0.1:8000/api/events/${id}/`, {
+        const response = await fetch(`${API_URL}/api/events/${id}/`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -81,7 +82,7 @@ export default function EventDetails() {
   const handleDelete = async () => {
     try {
       const token = await getToken();
-      const response = await fetch(`http://127.0.0.1:8000/api/events/${id}/`, {
+      const response = await fetch(`${API_URL}/api/events/${id}/`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",

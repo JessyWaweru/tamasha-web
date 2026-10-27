@@ -1,9 +1,5 @@
-import React from "react";
 import { SignIn as ClerkSignIn } from "@clerk/clerk-react";
-import { Link } from "react-router-dom";
-import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { ArrowLeft } from "lucide-react";
 
 export default function SignIn() {
   return (

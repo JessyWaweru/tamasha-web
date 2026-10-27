@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import { API_URL } from "@/lib/api";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "@clerk/clerk-react";
 import EventForm, { type EventData } from "../components/EventForm";
@@ -16,7 +17,7 @@ export default function AddEvent() {
       
       const token = await getToken();
 
-      const response = await fetch("http://127.0.0.1:8000/api/events/", {
+      const response = await fetch(`${API_URL}/api/events/`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

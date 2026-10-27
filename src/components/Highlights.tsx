@@ -1,4 +1,3 @@
-import React from "react";
 import { CalendarDays, MapPin, Users } from "lucide-react";
 
 export default function Highlights() {

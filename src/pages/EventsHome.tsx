@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import { API_URL } from "@/lib/api";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useAuth } from "@clerk/clerk-react";
 import EventItem from "../components/EventItem"; 
@@ -33,7 +34,7 @@ export default function EventsHome() {
           headers["Authorization"] = `Bearer ${token}`;
         }
 
-        const response = await fetch("http://127.0.0.1:8000/api/events/", {
+        const response = await fetch(`${API_URL}/api/events/`, {
           method: "GET",
           headers: headers,
         });

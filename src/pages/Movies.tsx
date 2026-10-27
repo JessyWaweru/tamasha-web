@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import { API_URL } from "@/lib/api";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -36,7 +37,7 @@ export default function Movies() {
   useEffect(() => {
     const fetchMovies = async () => {
       try {
-        const response = await fetch("http://127.0.0.1:8000/api/events/");
+        const response = await fetch(`${API_URL}/api/events/`);
         if (!response.ok) {
           throw new Error("Network response was not ok");
         }

@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import { API_URL } from "@/lib/api";
+import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useAuth } from "@clerk/clerk-react";
 import EventForm, { type EventData } from "../components/EventForm";
@@ -16,7 +17,7 @@ export default function UpdateEvent() {
     const getEvent = async () => {
       try {
         const token = await getToken();
-        const response = await fetch(`http://127.0.0.1:8000/api/events/${id}/`, {
+        const response = await fetch(`${API_URL}/api/events/${id}/`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -45,7 +46,7 @@ export default function UpdateEvent() {
       
       const token = await getToken();
 
-      const response = await fetch(`http://127.0.0.1:8000/api/events/${id}/`, {
+      const response = await fetch(`${API_URL}/api/events/${id}/`, {
         // We use PUT to replace the entire event resource, or you can use PATCH for partial updates
         method: "PUT", 
         headers: {

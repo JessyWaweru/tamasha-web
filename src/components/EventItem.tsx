@@ -1,4 +1,3 @@
-import React from "react";
 import { Link } from "react-router-dom";
 import formatDate from "@/utilities/formatdate";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
